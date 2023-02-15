@@ -1,4 +1,5 @@
 const button = document.querySelector(".btn")
+   let i=1
 button.addEventListener("mouseover",(e)=>{
     e.preventDefault()
     document.querySelector("#form").style.backgroundColor="#ccc"
@@ -12,6 +13,7 @@ button.addEventListener("mouseout",(e)=>{
 })
 
 function submitform(event){
+ 
     const name=document.getElementById('name').value
     const email=document.getElementById('email').value
     const phone=document.getElementById('phone').value
@@ -24,11 +26,15 @@ function submitform(event){
     console.log(date);
     console.log(time);
     event.preventDefault();
-    localStorage.setItem("name",name)
-    localStorage.setItem("email",email)
-    localStorage.setItem("phone",phone)
-    localStorage.setItem("date",date)
-    localStorage.setItem("time",time)
-    
+    const obj = {
+        "name":name,
+        "email":email,
+        "phone":phone,
+        "date": date,
+        "time":time
+    }
+    const serialised= JSON.stringify(obj)
+    localStorage.setItem(`obj${i}`,serialised)
+     i=i+1 
 }
 
